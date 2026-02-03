@@ -199,5 +199,55 @@ npm run dev
 
 ## Deployment
 
-_Deployment instructions to be added_
+This site is deployed to GitHub Pages with a custom domain at **dbhatia.xyz**.
+
+### Automatic Deployment
+
+The site automatically deploys when you push to the `main` branch via GitHub Actions (`.github/workflows/deploy.yml`).
+
+### Manual Setup (One-Time)
+
+If setting up for the first time or on a new repository:
+
+1. **Enable GitHub Pages:**
+   - Go to your repo: `https://github.com/dhruvbhatia00/DhruvWeb`
+   - Settings → Pages
+   - Source: "GitHub Actions"
+
+2. **Configure DNS at your domain registrar:**
+   
+   Add these DNS records for **dbhatia.xyz**:
+   
+   ```
+   Type    Name    Value                     TTL
+   A       @       185.199.108.153           3600
+   A       @       185.199.109.153           3600
+   A       @       185.199.110.153           3600
+   A       @       185.199.111.153           3600
+   CNAME   www     dhruvbhatia00.github.io   3600
+   ```
+
+3. **Wait for DNS propagation** (can take up to 48 hours, usually much faster)
+
+4. **Verify in GitHub:**
+   - Go to Settings → Pages
+   - Custom domain should show: `dbhatia.xyz`
+   - Wait for the "DNS check successful" message
+   - Enable "Enforce HTTPS"
+
+### Testing Locally Before Deploy
+
+```sh
+npm run build
+npm run preview
+```
+
+Visit `http://localhost:4173` to test the production build.
+
+### Troubleshooting
+
+- **404 errors on refresh:** Ensure `static/.nojekyll` exists
+- **DNS not resolving:** Check DNS propagation at `https://dnschecker.org`
+- **Build fails:** Check the Actions tab in GitHub for error logs
+- **Custom domain not working:** Verify `static/CNAME` contains `dbhatia.xyz`
 

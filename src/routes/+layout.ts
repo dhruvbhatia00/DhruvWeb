@@ -1,3 +1,5 @@
+export const prerender = true;
+
 export async function load() {
   // Get all blog posts (both .svelte and .md)
   const blogFilesSvelte = import.meta.glob('./blog/blogposts/*/+page.svelte', { eager: true, as: 'raw' });

@@ -83,6 +83,12 @@
     border-radius: 8px;
     margin-bottom: 1.5rem;
     border-left: 3px solid #d4af37;
+    transition: all 0.2s;
+  }
+
+  .course:hover {
+    background: rgba(212, 175, 55, 0.05);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   }
   
   .course p {
