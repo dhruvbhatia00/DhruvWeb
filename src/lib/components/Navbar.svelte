@@ -20,7 +20,7 @@ function handleTabClick(route: string) {
 }
 </script>
 
-<nav class="sidebar">
+<nav class="navbar">
   {#each tabs as tab}
     <button
       class="tab { $activeRoute === tab.route ? 'active' : '' }"
@@ -34,7 +34,7 @@ function handleTabClick(route: string) {
 </nav>
 
 <style>
-.sidebar {
+.navbar {
   /* --- CONFIGURATION --- */
   --base-scale: clamp(0.8rem, 1.2vw, 1.2rem); /* Master font/spacing scale */
   --tab-spacing: 0.6em;    /* Gap between tabs */
@@ -51,7 +51,7 @@ function handleTabClick(route: string) {
   
   /* Apply the scale */
   font-size: var(--base-scale);
-  font-family: 'IBM Plex Mono', 'Source Code Pro', monospace;
+  font-family: 'Courier New', Courier, 'IBM Plex Mono', 'Source Code Pro', monospace;
 }
 
 .tab {
@@ -68,8 +68,16 @@ function handleTabClick(route: string) {
   /* Visuals */
   background: var(--tab-color);
   border-radius: 0 var(--tab-curve) var(--tab-curve) 0;
-  color: rgba(0, 0, 0, 0.8);
-  font-weight: 500;
+  color: rgba(0, 0, 0, 0.9);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  
+  /* Better font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.08);
   
   /* Transitions */
@@ -110,6 +118,30 @@ function handleTabClick(route: string) {
   
   /* Subtle highlight on the active tab */
   filter: saturate(1.2) brightness(1.05);
+}
+
+/* Hand-drawn circle scribble on active tab */
+.tab.active::before {
+  content: '';
+  position: absolute;
+  left: 40%;
+  top: 50%;
+  width: 150%;
+  height: 140%;
+  transform: translate(-50%, -50%) rotate(-3deg);
+  pointer-events: none;
+  z-index: 1;
+  
+  /* SVG hand-drawn circle */
+  background-image: url("data:image/svg+xml,%3Csvg width='300' height='150' viewBox='320 750 300 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m 444.57093,791.15059 c -39.3785,-5.23718 -83.96778,10.97639 -89.22363,58.27902 -0.31346,2.82112 -0.27272,9.20229 3.61021,10.83062 35.19116,14.75758 221.25319,10.86824 191.85659,-66.01517 -18.44776,-48.248 -217.86708,14.03274 -186.18342,53.63732 20.89183,26.11478 193.40383,9.54597 193.40383,-43.32245 0,-22.25359 -147.59371,-23.17823 -128.42014,24.75569' fill='none' stroke='%23404040' stroke-width='3.5' stroke-linecap='round' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Ensure text appears above the circle */
+.tab.active {
+  position: relative;
 }
 
 /* Handle focus for accessibility */

@@ -50,14 +50,15 @@
   .cover-container {
     /* --- CONFIGURATION VARIABLES --- */
     /* This scales the base font size based on the container width */
-    --base-font: clamp(12px, 2.2vw, 24px); 
+    --base-font: clamp(16.61px, 1.62vw, 24.92px);
+    /* --base-font: clamp(12px, 2.2vw, 24px);  */
     --primary-yellow: #e6c200;
     --ink-black: #1a1a1a;
     --left-margin-pct: 4%; /* Adjust the vertical line position easily */
 
     display: flex;
     width: 39vw;
-    min-width: 320px;
+    min-width: 400px;
     max-width: 600px;
     aspect-ratio: 5 / 7;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);

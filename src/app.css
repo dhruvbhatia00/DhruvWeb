@@ -1,29 +1,47 @@
-:global(html), :global(body) {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  
-  /* 1. The Base "Paper" Color */
-  background-color: #f7f3ee; 
-  
-  /* 2. The Texture Overlay (Base64 encoded noise) */
-  /* This is much more stable than raw SVG code */
-  background-image: 
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.5) 0%, rgba(0, 0, 0, 0.03) 100%),
-    url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD///+l2Z/dAAAAAnRSTlP/AOW3MEoAAAAdSURBVHgBY4ADfCD8fwyM3wfD+P0wDj8Yh/8fAAMAO0MZZ6fN6+0AAAAASUVORK5CYII=");
-  
-  /* 3. Subtle settings to make it look right */
-  background-repeat: repeat;
-  background-size: auto, 120px 120px; /* Controls the size of the grain */
-  background-attachment: fixed;
+/* ANimations */
+/* Assign names to the key actors */
+.cover-container {
+  view-transition-name: book-cover;
 }
 
-/* Ensure your containers don't hide the texture */
-:global(.viewport), :global(.app-viewport) {
-  background: transparent !important;
+.sidebar-clinger {
+  view-transition-name: sidebar;
 }
 
+.academic-sheet {
+  view-transition-name: content-sheet;
+}
+
+/* Custom Animation for the Content Sheet sliding from below */
+::view-transition-old(content-sheet) {
+  animation: 300ms ease-out both fade-out;
+}
+
+::view-transition-new(content-sheet) {
+  animation: 600ms cubic-bezier(0.2, 0.8, 0.2, 1); /*both slide-from-below;*/
+}
+
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+
+@keyframes slide-from-below {
+  from { 
+    transform: translateY(30px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}
+
+/* Ensure the Sidebar and Cover use smooth, slightly longer transitions */
+::view-transition-group(book-cover),
+::view-transition-group(sidebar) {
+  animation-duration: 700ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 /* Typography */
 body {
