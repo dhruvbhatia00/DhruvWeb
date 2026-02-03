@@ -1,5 +1,5 @@
 <script>
-// Teaching page content goes here
+let pastCoursesOpen = false;
 </script>
 
 <h1>Teaching</h1>
@@ -22,24 +22,30 @@
   </p>
 </div>
 
-<h2>Past Courses</h2>
+<h2 class="dropdown-header" on:click={() => (pastCoursesOpen = !pastCoursesOpen)}>
+  <span class="dropdown-arrow" class:open={pastCoursesOpen}>▸</span>
+  Past Courses
+</h2>
 
-<div class="past-courses">
-  <div class="past-course-item"><strong>Autumn 2025:</strong> MATH 126 - Calculus III (TA)</div>
-  <div class="past-course-item"><strong>Spring 2025:</strong> MATH 208 - Linear Algebra (TA)</div>
-  <div class="past-course-item"><strong>Winter 2025:</strong> MATH 208 - Linear Algebra (TA)</div>
-  <div class="past-course-item"><strong>Autumn 2024:</strong> MATH 126 - Calculus III (TA)</div>
-  <div class="past-course-item"><strong>Summer 2024:</strong> MATH 125 - Calculus II (TA)</div>
-  <div class="past-course-item"><strong>Spring 2024:</strong> MATH 126 - Calculus III (TA)</div>
-  <div class="past-course-item"><strong>Winter 2024:</strong> MATH 124 - Calculus I (TA)</div>
-  <div class="past-course-item"><strong>Autumn 2023:</strong> MATH 124 - Calculus I (TA)</div>
-</div>
+{#if pastCoursesOpen}
+  <div class="past-courses">
+    <div class="past-course-item"><strong>Autumn 2025:</strong> MATH 126 - Calculus III (TA)</div>
+    <div class="past-course-item"><strong>Spring 2025:</strong> MATH 208 - Linear Algebra (TA)</div>
+    <div class="past-course-item"><strong>Winter 2025:</strong> MATH 208 - Linear Algebra (TA)</div>
+    <div class="past-course-item"><strong>Autumn 2024:</strong> MATH 126 - Calculus III (TA)</div>
+    <div class="past-course-item"><strong>Summer 2024:</strong> MATH 125 - Calculus II (TA)</div>
+    <div class="past-course-item"><strong>Spring 2024:</strong> MATH 126 - Calculus III (TA)</div>
+    <div class="past-course-item"><strong>Winter 2024:</strong> MATH 124 - Calculus I (TA)</div>
+    <div class="past-course-item"><strong>Autumn 2023:</strong> MATH 124 - Calculus I (TA)</div>
+  </div>
+{/if}
 
 <h2>Workshops & Talks</h2>
-<ul>
-  <li>Lean Together (with Vasily Ilin) - Fridays at CMU B006</li>
-  <li>Writing Milestone Seminar: Tropical Curves and the top weight cohomology of <span class="math-inline">{'M_{g,n}'}</span> - April 24 2025</li>
-</ul>
+<div class="workshops">
+  <div class="workshop-item">Lean Together (with Vasily Ilin) - Fridays at CMU B006</div>
+  <div class="workshop-item">Writing Milestone Seminar: Tropical Curves and the top weight cohomology of <span class="math-inline">{'M_{g,n}'}</span> - April 24 2025</div>
+  <div class="workshop-item"><a class="workshop-link" href="https://www.atawfeek.com/moduli">Tropical Geometry Seminar</a> (with Andrew Tawfeek) - Summer 2024</div>
+</div>
 
 <style>
   :global(body) {
@@ -64,6 +70,29 @@
     font-weight: 600;
     padding-bottom: 0.2em;
     border-bottom: 2px solid #e0e0e0;
+  }
+  
+  .dropdown-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s;
+  }
+  
+  .dropdown-header:hover {
+    color: #d4af37;
+  }
+  
+  .dropdown-arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 1em;
+  }
+  
+  .dropdown-arrow.open {
+    transform: rotate(90deg);
   }
   
   h3 {
@@ -98,9 +127,16 @@
   }
   
   .past-courses {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    .past-courses {
+      grid-template-columns: 1fr;
+    }
   }
   
   .past-course-item {
@@ -120,6 +156,39 @@
   
   .past-course-item strong {
     color: #2a2a2a;
+  }
+  
+  .workshops {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  
+  .workshop-item {
+    padding: 0.4rem 0.8rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border-left: 3px solid #d4af37;
+    color: #333;
+    line-height: 1.4;
+    transition: all 0.2s;
+  }
+  
+  .workshop-item:hover {
+    background: rgba(212, 175, 55, 0.05);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .workshop-link {
+    color: #2a2a2a;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .workshop-link:hover {
+    color: #d4af37;
+    border-bottom: 1px solid #d4af37;
   }
   
   ul {
