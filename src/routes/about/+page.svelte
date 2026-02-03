@@ -3,7 +3,7 @@
     import MailIcon from '$lib/assets/mail.svg?url';
     import BookIcon from '$lib/assets/book.svg?url';
     import LinkedInIcon from '$lib/assets/linkedin.svg?url';
-    import ProfilePhoto from '$lib/assets/579F41CB-3FCE-4C2B-877D-9074E0FAD20B.JPG?url';
+    import ProfilePhoto from '$lib/assets/dhruv.JPG?url';
 </script>
 
 <h1>About Me</h1>

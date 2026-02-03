@@ -4,11 +4,18 @@
   import MailIcon from '$lib/assets/mail.svg?url';
   import BookIcon from '$lib/assets/book.svg?url';
   import LinkedInIcon from '$lib/assets/linkedin.svg?url';
+  import CoffeeStain from '$lib/assets/vecteezy_coffee-stain-real-cup-mess-mark_10161481.png';
 
 </script>
 
 <div class="cover-container">
   <div class="cover-content">
+    <!-- Vignette overlay (entire cover) -->
+    <div class="vignette"></div>
+    
+    <!-- Coffee stain -->
+    <img src={CoffeeStain} alt="Coffee stain" class="coffee-stain" />
+    
     <!-- Banner -->
     <div class="banner">
       <div class="banner-text">Graduate Student in Mathematics</div>
@@ -81,6 +88,19 @@
     flex-direction: column;
     overflow: hidden;
     border-radius: 6px;
+    position: relative;
+  }
+  
+  .vignette {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(0, 0, 0, 0.08) 100%);
+    border-radius: 6px;
+    z-index: 10;
   }
 
   /* Shared vertical line logic */
@@ -96,7 +116,7 @@
   }
 
   .banner {
-    background: white;
+    background: rgb(253, 251, 236);
     padding: 3em 1em 3em calc(var(--left-margin-pct) + 0.5em);
     position: relative;
   }
@@ -120,6 +140,17 @@
     justify-content: space-between;
     padding: 0.5em 1.5em 0.5em 0.5em;
     position: relative;
+  }
+  
+  .vignette {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(0, 0, 0, 0.12) 100%);
+    border-radius: 4px;
   }
 
   .author-info {
@@ -182,5 +213,16 @@
 
   .links a:hover {
     opacity: 0.5;
+  }
+  
+  .coffee-stain {
+    position: absolute;
+    bottom: -5%;
+    left: 3%;
+    width: 45%;
+    height: auto;
+    opacity: 0.6;
+    z-index: 5;
+    pointer-events: none;
   }
 </style>
