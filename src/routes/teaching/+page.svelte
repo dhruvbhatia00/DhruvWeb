@@ -5,9 +5,11 @@
 <h1>Teaching</h1>
 
 <p>
-  I am passionate about making abstract mathematics accessible and engaging. My teaching 
+  placeholder: I am passionate about making abstract mathematics accessible and engaging. My teaching 
   philosophy emphasizes building intuition through visualization and computational examples 
   before diving into formal proofs.
+
+  TODO: Change this
 </p>
 
 <h2>Current Courses (Winter 2026)</h2>
