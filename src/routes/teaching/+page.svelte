@@ -10,46 +10,34 @@
   before diving into formal proofs.
 </p>
 
-<h2>Current Courses (Spring 2026)</h2>
+<h2>Current Courses (Winter 2026)</h2>
 
 <div class="course">
-  <h3>MATH 301: Introduction to Topology</h3>
-  <p><strong>Role:</strong> Teaching Assistant</p>
+  <h3>MATH 125: Calculus with Analytic Geometry II</h3>
+  <p><strong>Teaching Assistant</strong></p>
   <p>
-    Topics include metric spaces, topological spaces, continuity, compactness, connectedness, 
-    and an introduction to fundamental groups. Office hours: Tuesdays 2-4pm, Thursdays 3-5pm.
-  </p>
-</div>
-
-<div class="course">
-  <h3>MATH 150: Calculus II</h3>
-  <p><strong>Role:</strong> Recitation Instructor</p>
-  <p>
-    Leading weekly problem-solving sessions covering integration techniques, sequences and series, 
-    and applications of calculus.
+    Office hours: Wednesdays 2-4pm in the Math Study Center (CMU B014) 
   </p>
 </div>
 
 <h2>Past Courses</h2>
 
-<div class="course-list">
-  <p><strong>Fall 2025:</strong> Linear Algebra (TA), Discrete Mathematics (Grader)</p>
-  <p><strong>Spring 2025:</strong> Abstract Algebra (TA), Calculus I (Recitation Instructor)</p>
-  <p><strong>Fall 2024:</strong> Calculus I (TA), Introduction to Proofs (Grader)</p>
+<div class="past-courses">
+  <div class="past-course-item"><strong>Autumn 2025:</strong> MATH 126 - Calculus III (TA)</div>
+  <div class="past-course-item"><strong>Spring 2025:</strong> MATH 208 - Linear Algebra (TA)</div>
+  <div class="past-course-item"><strong>Winter 2025:</strong> MATH 208 - Linear Algebra (TA)</div>
+  <div class="past-course-item"><strong>Autumn 2024:</strong> MATH 126 - Calculus III (TA)</div>
+  <div class="past-course-item"><strong>Summer 2024:</strong> MATH 125 - Calculus II (TA)</div>
+  <div class="past-course-item"><strong>Spring 2024:</strong> MATH 126 - Calculus III (TA)</div>
+  <div class="past-course-item"><strong>Winter 2024:</strong> MATH 124 - Calculus I (TA)</div>
+  <div class="past-course-item"><strong>Autumn 2023:</strong> MATH 124 - Calculus I (TA)</div>
 </div>
 
-<h2>Workshops & Tutorials</h2>
+<h2>Workshops & Talks</h2>
 <ul>
-  <li>"Introduction to Topological Data Analysis" - Graduate Student Seminar, Fall 2025</li>
-  <li>"Python for Mathematical Computing" - Undergraduate Math Club, Spring 2025</li>
-  <li>"Visualizing Higher Dimensions" - Math Outreach Day, Fall 2024</li>
+  <li>Lean Together (with Vasily Ilin) - Fridays at CMU B006</li>
+  <li>Writing Milestone Seminar: Tropical Curves and the top weight cohomology of <span class="math-inline">{'M_{g,n}'}</span> - April 24 2025</li>
 </ul>
-
-<h2>Teaching Awards</h2>
-<p>
-  <strong>Outstanding Teaching Assistant Award</strong> (2025)<br>
-  Department of Mathematics
-</p>
 
 <style>
   :global(body) {
@@ -91,7 +79,7 @@
   
   .course {
     background: #f9f9f9;
-    padding: 0.6rem 0.9rem;
+    padding: 0.1rem 0.9rem;
     border-radius: 8px;
     margin-bottom: 1.5rem;
     border-left: 3px solid #d4af37;
@@ -101,8 +89,29 @@
     margin-bottom: 0.5em;
   }
   
-  .course-list p {
-    margin-bottom: 0.5em;
+  .past-courses {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  
+  .past-course-item {
+    padding: 0.4rem 0.8rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border-left: 3px solid #d4af37;
+    color: #333;
+    line-height: 1.4;
+    transition: all 0.2s;
+  }
+  
+  .past-course-item:hover {
+    background: rgba(212, 175, 55, 0.05);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .past-course-item strong {
+    color: #2a2a2a;
   }
   
   ul {

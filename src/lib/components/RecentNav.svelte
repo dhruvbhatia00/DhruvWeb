@@ -80,13 +80,7 @@
   background: var(--tab-color);
   border-radius: 0 0px 0px 0;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.08);
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  
-  /* Better font rendering */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  font-weight: 500;
   
   transition: 
     transform var(--transition-speed) ease,
@@ -133,15 +127,12 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-bottom: 0.15em;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 
-.item-date {2em;
-  color: rgba(0, 0, 0, 0.65);
+.item-date {
+  font-size: 0.8em;
+  color: rgba(0, 0, 0, 0.6);
   font-style: italic;
-  font-weight: 500;
-  white-space: nowrap;
-  letter-spacing: 0.01em
   white-space: nowrap;
 }
 </style>

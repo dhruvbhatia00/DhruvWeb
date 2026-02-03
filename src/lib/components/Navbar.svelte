@@ -18,16 +18,29 @@ const activeRoute = derived(page, ($page) => $page.url.pathname);
 function handleTabClick(route: string) {
   goto(route);
 }
+
+// Check if a tab is active (exact match for home, startsWith for others)
+function isTabActive(tabRoute: string, currentRoute: string): boolean {
+  if (tabRoute === '/') {
+    return currentRoute === '/';
+  }
+  return currentRoute.startsWith(tabRoute);
+}
 </script>
 
 <nav class="navbar">
   {#each tabs as tab}
     <button
-      class="tab { $activeRoute === tab.route ? 'active' : '' }"
+      class="tab { isTabActive(tab.route, $activeRoute) ? 'active' : '' }"
       style="--tab-color: {tab.color}; background: {tab.color};"
-      aria-current={$activeRoute === tab.route ? 'page' : undefined}
+      aria-current={isTabActive(tab.route, $activeRoute) ? 'page' : undefined}
       on:click={() => handleTabClick(tab.route)}
     >
+      {#if isTabActive(tab.route, $activeRoute)}
+        <svg class="scribble" width="300" height="150" viewBox="320 750 400 150" xmlns="http://www.w3.org/2000/svg">
+          <path d="m 444.57093,791.15059 c -39.3785,-5.23718 -83.96778,10.97639 -89.22363,58.27902 -0.31346,2.82112 -0.27272,9.20229 3.61021,10.83062 35.19116,14.75758 221.25319,10.86824 191.85659,-66.01517 -18.44776,-48.248 -217.86708,14.03274 -186.18342,53.63732 20.89183,26.11478 193.40383,9.54597 193.40383,-43.32245 0,-22.25359 -147.59371,-23.17823 -128.42014,24.75569" fill="none" stroke="#404040" stroke-width="3.5" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+      {/if}
       {tab.name}
     </button>
   {/each}
@@ -121,22 +134,27 @@ function handleTabClick(route: string) {
 }
 
 /* Hand-drawn circle scribble on active tab */
-.tab.active::before {
-  content: '';
+.scribble {
   position: absolute;
-  left: 40%;
+  left: 50%;
   top: 50%;
   width: 150%;
   height: 140%;
   transform: translate(-50%, -50%) rotate(-3deg);
   pointer-events: none;
   z-index: 1;
-  
-  /* SVG hand-drawn circle */
-  background-image: url("data:image/svg+xml,%3Csvg width='300' height='150' viewBox='320 750 300 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m 444.57093,791.15059 c -39.3785,-5.23718 -83.96778,10.97639 -89.22363,58.27902 -0.31346,2.82112 -0.27272,9.20229 3.61021,10.83062 35.19116,14.75758 221.25319,10.86824 191.85659,-66.01517 -18.44776,-48.248 -217.86708,14.03274 -186.18342,53.63732 20.89183,26.11478 193.40383,9.54597 193.40383,-43.32245 0,-22.25359 -147.59371,-23.17823 -128.42014,24.75569' fill='none' stroke='%23404040' stroke-width='3.5' stroke-linecap='round' opacity='0.5'/%3E%3C/svg%3E");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+}
+
+.scribble path {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: draw 0.8s ease-out forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 /* Ensure text appears above the circle */

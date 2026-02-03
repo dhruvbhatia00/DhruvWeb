@@ -1,6 +1,7 @@
 <script lang="ts">
 import Navbar from '$lib/components/Navbar.svelte';
 import RecentNav from '$lib/components/RecentNav.svelte';
+import LatexRenderer from '$lib/components/LatexRenderer.svelte';
 import { onNavigate } from '$app/navigation';
   import { page } from '$app/stores';
   import type { LayoutData } from './$types';
@@ -29,7 +30,9 @@ import { onNavigate } from '$app/navigation';
 <div class="viewport">
   <div class="centering-anchor" class:at-home={$page.url.pathname === '/'}>    
     <div class="centered-box" class:is-home={$page.url.pathname === '/'}>
-      <slot />
+      <LatexRenderer>
+        <slot />
+      </LatexRenderer>
     </div>
     
     <aside class="nav_clinger">

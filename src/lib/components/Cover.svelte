@@ -3,6 +3,7 @@
   import GitHubIcon from '$lib/assets/github.svg?url';
   import MailIcon from '$lib/assets/mail.svg?url';
   import BookIcon from '$lib/assets/book.svg?url';
+  import LinkedInIcon from '$lib/assets/linkedin.svg?url';
 
 </script>
 
@@ -31,7 +32,7 @@
       </div>
       <div class="footer">
         <div class="links">
-          <a href="https://github.com" target="_blank" title="GitHub">
+          <a href="https://github.com/dhruvbhatia00" target="_blank" title="GitHub">
             <img src={GitHubIcon} alt="GitHub" />
           </a>
           <a href="mailto:dbhatia1@uw.edu" title="Email">
@@ -39,6 +40,9 @@
           </a>
           <a href="/cv.pdf" target="_blank" title="CV">
             <img src={BookIcon} alt="CV" />
+          </a>
+          <a href="https://www.linkedin.com/in/dhruv-bhatia-159863180/" target="_blank" title="LinkedIn">
+            <img src={LinkedInIcon} alt="LinkedIn" />
           </a>
         </div>
       </div>
